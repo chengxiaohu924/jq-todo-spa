@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-hans">
+    <head>
+        <meta charset="UTf-8">
+        <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+        <link rel="stylesheet" href="node_modules/normalize.css/normalize.css">
+        <link rel="stylesheet" href="css/base.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>To-do App</title>
+    </head>
+    <body>
+        <div class="container">
+            <h1>做到你想做的</h1>
+            <div class="add-task">
+                <input type="text" placeholder="e.g. 下午五点做100俯卧撑">
+                <button type="submit">submit</button>
+            </div>
+            <div class="task-list">
+                <div class="task-item">
+                    <span><input type="checkbox"></span>
+                    <span class="task-content">item content 1</span>
+                    <span>delete</span>
+                    <span>detail</span>
+                </div>
+                <div class="task-item">
+                    <span><input type="checkbox"></span>
+                    <span class="task-content">item content 1</span>
+                    <span>delete</span>
+                    <span>detail</span>
+                </div>
+                <div class="task-item">
+                    <span><input type="checkbox"></span>
+                    <span class="task-content">item content 1</span>
+                    <span>delete</span>
+                    <span>detail</span>
+                </div>
+            </div>
+            <div class="task-detail-mask"></div>
+            <div class="task-detail">
+                <div class="content">俯卧撑</div>
+                <div>
+                    <div class="desc">
+                        <textarea></textarea>
+                    </div>
+                </div>
+                <div class="remind">
+                    <input type="date">
+                    <button type="submit">submit</button>
+                </div>
+            </div>
+        </div>
+        <script src="node_modules/jquery/dist/jquery.js"></script>
+        <script src="js/main.js"></script>
+    </body>
+</html>

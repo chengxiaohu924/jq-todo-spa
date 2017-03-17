@@ -1,0 +1,125 @@
+*{
+    /*background: rgba(0, 0, 0, 0.1);*/
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    transition: background 300ms;
+    outline: 0;
+}
+
+body {
+    background: #E7C049;
+}
+
+.container {
+    max-width: 768px;
+    margin: 0 auto;
+    position: relative;
+}
+
+h1 {
+    text-align: center;
+}
+
+.task-item:hover {
+    background: #E7C000;
+}
+
+.task-list {
+    margin: 10px 0;;
+}
+
+input, .task-item, button, .task-detail-mask, textarea{
+    border-radius: 3px;
+    padding: 10px;
+}
+
+textarea, input[type=text], input[type=date], button{
+    bottom: 0;
+}
+
+textarea:hover, input[type=text]:hover, input[type=date]:hover ,
+textarea:focus, input[type=text]:focus, input[type=date]:focus {
+    background: #eee;
+}
+
+textarea,
+input[type=text], input[type=date] {
+    border: 5px;
+    border-radius: 5px;
+    display: block;
+    width: 100%;
+    box-shadow: 1px 2px 1px #000;
+}
+
+textarea {
+    min-height: 90px;
+}
+
+button {
+    display: inline-block;
+    border: 0;
+    color: #333;
+    cursor: pointer;
+}
+
+.add-task input[type=text] {
+    float: left;
+    width: 83%;
+    margin-right: 1%;
+}
+
+.add-task [type=submit] {
+    background: #e7c999;
+    width: 15%;
+    box-shadow: 1px 2px 1px #000;
+    border: 1px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.add-task [type=submit]:hover {
+    background: #E7C000;
+}
+
+.task-item {
+    margin: 5px;
+    padding: 10px;
+    background: #F0E2A4;
+    margin-bottom: 2px;
+    border-radius: 10px;
+    box-shadow: 1px 2px 10px #000;
+    cursor: pointer;
+}
+
+.task-detail, .task-detail-mask {
+    position: absolute;
+}
+
+.task-detail {
+    background: #fff;
+    color: #333;
+    width: 50%;
+    height: 100%;
+    padding: 10px;
+    right: 0;
+    bottom: 0;
+}
+
+.task-detail .content {
+    padding: 10px;
+    font-weight: 900;
+    cursor: pointer;
+}
+
+.task-detail > * {
+    margin-bottom: 10px;
+}
+
+.task-detail-mask {
+    bottom: 0;
+    right: 0;
+    top: 0;
+    left: 0;
+    background: rgba(30,30,30,.3);
+}

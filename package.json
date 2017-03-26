@@ -6,11 +6,12 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "supo<chengxiaohu815@gmail.com>",
   "license": "ISC",
   "dependencies": {
     "jquery": "^3.1.1",
-    "normalize.css": "^5.0.0",
-    "store.js": "^1.0.4"
+    "jquery-datetimepicker": "^2.5.4",
+    "normalize.css": "^4.2.0",
+    "store": "^1.3.20"
   }
 }

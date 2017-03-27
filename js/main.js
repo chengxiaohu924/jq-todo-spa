@@ -12,7 +12,9 @@
     $task_detail_content_input,
     $task_detail_mask = $('.task-detail-mask'),
     $update_form,
-    $task_detail_content;
+    $task_detail_content,
+    $checkbox_complete
+    ;
 
   init();
 
@@ -35,13 +37,32 @@
   }
 
   function listen_task_detail() {
+      var index;
+    $('.task-content').on('click', function (e) {
+      e.preventDefault();
+      index = $(this).parent().data('index');
+      show_task_detail(index);
+    })
+
     $task_detail_trigger.on('click', function () {
       var $this = $(this);
       var $item = $this.parent().parent();
-      var index = $item.data('index');
+      index = $item.data('index');
       show_task_detail(index);
     })
   }
+
+function listen_checkbox_complete () {
+  $checkbox_complete.on('click', function () {
+    var $this = $(this);
+    var is_complete = $this.is(':checked');
+    var index = $this.parent().parent().data('index');
+    update_task(index, {complete: is_complete});
+    console.log('complete: is_complete', {complete: is_complete});
+  })
+}
+
+
 
   function show_task_detail(index) {
     render_task_detail(index);
@@ -53,9 +74,8 @@
   function update_task(index, data) {
     if(!index || !task_list[index]) return;
 
-    // task_list[index] = $.merge({}, task_list[index], data);
-    task_list[index] = data ;
-    // console.log('task_list[index]', task_list[index]);
+    task_list[index] = $.extend({}, task_list[index], data);
+    console.log('task_list[index]', task_list[index]);
     refresh_task_list();
 }
 
@@ -69,7 +89,7 @@
     if (index === undefined || !task_list[index])
       return;
     var item = task_list[index];
-    console.log('item', item);
+    // console.log('item', item);
     var tpl = '<form>' +
       '<div class="content input-item">' +
       item.content +
@@ -96,7 +116,7 @@
     $update_form = $task_detail.find('form');
     $task_detail_content = $update_form.find('.content');
     $task_detail_content_input = $update_form.find('[name=content]');
-    console.log('$task_detail_content_input', $task_detail_content_input);
+    // console.log('$task_detail_content_input', $task_detail_content_input);
 
     $task_detail_content.on('click', function (e) {
       e.preventDefault();
@@ -117,7 +137,7 @@
   }
 
   function listen_task_delete() {
-    $task_delete_trigger.on('click', function () {
+      $task_delete_trigger.on('click', function () {
       var $this = $(this);
       var $item = $this.parent().parent();
       var index = $item.data('index');
@@ -166,15 +186,17 @@
 
     $task_delete_trigger = $('.anchor.delete')
     $task_detail_trigger = $('.anchor.detail')
+    $checkbox_complete = $('.task-list .task-item .complete')
     listen_task_delete();
     listen_task_detail();
+    listen_checkbox_complete();
   }
 
   function render_task_item(data, index) {
     if (!data || !index) return;
     var list_item_tpl =
       '<div class="task-item" data-index=' + index + '">' +
-      '<span><input type="checkbox"> </span>' +
+      '<span><input class="complete" type="checkbox"> </span>' +
       '<span class="task-content">' + data.content + '</span>' +
       '<span class="fr">' +
       '<span class="anchor delete">删掉</span>' +

@@ -1,10 +1,13 @@
 * {
-    /*background: rgba(0, 0, 0, 0.1);*/
+    /*background: rgba(0, 0, 0, .1);*/
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
-    /*box-sizing 将我们box的width的计算方式变为了content + padding + border，而不是之前的content的width，所以当我们增加padding或border的width时，我们不会增加我们box的width。相反我们的content的width会缩小padding或border增加的宽度。*/
     box-sizing: border-box;
-    transition: background 300ms;
+    -webkit-transition: background .2s;
+    -moz-transition: background .2s;
+    -ms-transition: background .2s;
+    -o-transition: background .2s;
+    transition: background .2s;
     outline: 0;
 }
 
@@ -155,9 +158,30 @@ button {
     float: right;
 }
 
+.task-item.completed {
+    color: #aaa;
+    /*background: rgba(255,255,255,.7);*/
+    opacity: 0.4;
+}
+
+.task-item.completed:after {
+    content: " ";
+    height: 1px;
+    background: #aaa;
+    width: 96%;
+    position: relative;
+    top: -8px;
+    display: block;
+    float: right;
+}
+
+
 .anchor:hover,
 .task-content:hover {
     color: #999;
 }
 
-.content.
+
+.task-item.completed {
+    color: #111;
+}

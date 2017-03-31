@@ -185,3 +185,10 @@ button {
 .task-item.completed {
     color: #111;
 }
+
+.msg {
+    display: none;
+    text-align: center;
+    background: #ffe265;
+    padding: 15px;
+}

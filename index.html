@@ -1,44 +1,43 @@
 <!DOCTYPE html>
 <html lang="zh-hans">
-    <head>
-        <meta charset="UTf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-        <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
-        <link rel="stylesheet" href="node_modules/normalize.css/normalize.css">
-        <link rel="stylesheet" href="node_modules/jquery-datetimepicker/build/jquery.datetimepicker.min.css">
-        <!--<link rel="stylesheet" href="//cdn.bootcss.com/normalize/5.0.0/normalize.css">-->
-        <link rel="stylesheet" href="css/base.css">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <svg width="20%" height="20%" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 68 65">
-        <path fill="#4e86b1" d="M42 27v-20c0-3.7-3.3-7-7-7s-7 3.3-7 7v21l12 15-7 15.7c14.5 13.9 35 2.8 35-13.7 0-13.3-13.4-21.8-26-18zm6 25c-3.9 0-7-3.1-7-7s3.1-7 7-7 7 3.1 7 7-3.1 7-7 7z">
-            <animate dur="2s" values="#000000; #4e86b1; #000000" keyTimes="0; 0.5; 1" attributeName="fill" repeatCount="indefinite"/>
-        </path>
-        <path d="M14 27v-20c0-3.7-3.3-7-7-7s-7 3.3-7 7v41c0 8.2 9.2 17 20 17s20-9.2 20-20c0-13.3-13.4-21.8-26-18zm6 25c-3.9 0-7-3.1-7-7s3.1-7 7-7 7 3.1 7 7-3.1 7-7 7z">
-            <animate dur="2s" values="#4e86b1; #000000; #4e86b1" keyTimes="0; 0.5; 1" attributeName="fill" repeatCount="indefinite"/>
-        </path>
-        </svg>
-        <title>To-do App</title>
-    </head>
-    <body>
-        <div class="container">
-            <h1>做到你想做的</h1>
-            <hr>
-            <form class="add-task">
-                <input type="text" name="content" autofocus  autocomplete="off" placeholder="e.g. 下午五点做100俯卧撑">
-                <button type="submit">我想做</button>
-            </form>
-            <div class="task-list">
-                <!--<div class="task-item" data-key="65" class="key">
+
+<head>
+    <meta charset="UTf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+    <link rel="stylesheet" href="node_modules/normalize.css/normalize.css">
+    <link rel="stylesheet" href="node_modules/jquery-datetimepicker/build/jquery.datetimepicker.min.css">
+    <!--<link rel="stylesheet" href="//cdn.bootcss.com/normalize/5.0.0/normalize.css">-->
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/sprite.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-do App</title>
+</head>
+
+<body>
+    <div class="msg">
+        <span class="msg-content"></span>
+        <span class="anchor confirmed">知道了</span>
+    </div>
+    <div class="container">
+        <h1><span class="icon icon-alarm"></span>做到你想做的</h1>
+        <hr>
+        <form class="add-task">
+            <input type="text" name="content" autofocus autocomplete="off" placeholder="e.g. 下午五点做100俯卧撑">
+            <button type="submit">我想做</button>
+        </form>
+        <div class="task-list">
+            <!--<div class="task-item" data-key="65" class="key">
                     <span><input type="checkbox"></span>
                     <span class="task-content">item content 1</span>
                     <span>delete</span>
                     <span>detail</span>
                 </div>-->
-            </div>
-            <div class="task-detail-mask"></div>
-            <div class="task-detail">
-                <!--<div> 
+        </div>
+        <div class="task-detail-mask"></div>
+        <div class="task-detail">
+            <!--<div> 
                     <div class="content">俯卧撑</div>  
                     <div>
                         <div class="desc">
@@ -50,14 +49,15 @@
                         <button type="submit">submit</button>
                     </div>
                 </div>-->
-            </div>
         </div>
-<script src="node_modules/jquery/dist/jquery.js"></script>
-<script src="node_modules/jquery-datetimepicker/build/jquery.datetimepicker.full.js"></script>
-<script src="node_modules/store/store.js"></script>
-        <!--<script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+    </div>
+    <script src="node_modules/jquery/dist/jquery.js"></script>
+    <script src="node_modules/jquery-datetimepicker/build/jquery.datetimepicker.full.js"></script>
+    <script src="node_modules/store/store.js"></script>
+    <!--<script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
         <script src="//cdn.bootcss.com/store.js/1.3.20/store.js"></script>
         <script src="//cdn.bootcss.com/normalize/5.0.0/normalize.css"></script>-->
-        <script src="js/main.js"></script>
-    </body>
+    <script src="js/main.js"></script>
+</body>
+
 </html>

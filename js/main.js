@@ -16,12 +16,22 @@
     $update_form,
     $task_detail_content,
     $checkbox_complete
+    , $msg = $('.msg')
+    , $msg_content = $msg.find('.msg-content')
+    , $msg_confirm = $msg.find('.confirmed')
+    , $alerter = $('.alerter')
     ;
 
   init();
 
   $form_add_task.on('submit', on_add_task_form_submit)
   $task_detail_mask.on('click', hide_task_detail)
+
+  function listen_msg_event() {
+    $msg_confirm.on('click', function () {
+      hide_msg();
+    })
+  }
 
   function on_add_task_form_submit(e) {
     var new_task = {},
@@ -113,7 +123,7 @@
       '</div>' +
       '</div>' +
       '<div class="remind input-item">' +
-      '<label> 这个时候提醒我：</label>' +
+      '<label><span class="icon icon-alarm"></span> 这个时候提醒我：</label>' +
       '<input class="datetime input-item" name="remind_date" type="text" value="' + (item.remind_date || '') +'">' +
       '</div>' +
       '<div class="input-item"><button type="submit">确认更新</button></div>' +
@@ -180,10 +190,44 @@
 
   function init() {
     task_list = store.get('task_list') || [];
+      listen_msg_event();
     // console.log('task_list', task_list);
     if (task_list.length)
       render_task_list();
+      task_remind_check();
   }
+
+   function task_remind_check() {
+    var current_timestamp;
+    var itl = setInterval(function () {
+      for (var i = 0; i < task_list.length; i++) {
+        var item = get(i), task_timestamp;
+        if (!item || !item.remind_date || item.informed)
+          continue;
+
+        current_timestamp = (new Date()).getTime();
+        task_timestamp = (new Date(item.remind_date)).getTime();
+        if (current_timestamp - task_timestamp >= 1) {
+          update_task(i, {informed: true});
+          show_msg(item.content);
+        }
+      }
+    }, 300);
+  }
+
+  function show_msg(msg) {
+    if (!msg) return;
+
+    $msg_content.html(msg);
+    $alerter.get(0).play();
+    $msg.show();
+  }
+
+  function hide_msg() {
+    $msg.hide();
+  }
+
+
 
 
   function render_task_list() {
@@ -223,8 +267,8 @@
       '<span><input class="complete"' + (data.complete ? 'checked' : '') + 'type="checkbox">  </span>' +
       '<span class="task-content">' + data.content + '</span>' +
       '<span class="fr">' +
-      '<span class="anchor delete">删掉</span>' +
-      '<span class="anchor detail"> 详细</span>' +
+      '<span class="anchor delete"><span class="icon icon-cross"></span></span>' +
+      '<span class="anchor detail">' + '&nbsp&nbsp&nbsp' + '<span class="icon icon-zoom-in"></span></span>' +
       '</span>' +
       '</div>';
     return $(list_item_tpl);
